@@ -1,0 +1,20 @@
+source:
+  url: "https://web.archive.org/web/20230908091635/https://en.wikipedia.org/wiki/List_of_largest_banks"
+
+extract:
+  user_agent: "Banks-ETL/1.0"
+  timeout_sec: 15
+  retries: 3
+
+transform:
+  currencies: [EUR, GBP, INR]
+  exchange_rate_csv: "data/exchange_rate.csv"
+
+load:
+  table_name: "largest_banks"
+  db_path: "data/warehouse/Banks.db"
+  csv_output: "data/processed/Largest_banks_data.csv"
+
+paths:
+  raw_html: "data/raw/largest_banks.html"
+  logs_dir: "logs/app.log"
